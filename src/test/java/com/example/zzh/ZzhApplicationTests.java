@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 class ZzhApplicationTests {
     @Autowired
     RabbitTemplate rabbitTemplate;
-
     /**
      * HELLO
      */
@@ -21,7 +20,6 @@ class ZzhApplicationTests {
     void contextLoads() {
         rabbitTemplate.convertAndSend("user", "hello");
     }
-
     /**
      * work路由模型
      */
@@ -31,9 +29,8 @@ class ZzhApplicationTests {
             rabbitTemplate.convertAndSend("work", "work路由模型"+i);
         }
     }
-
     /**
-     * @Exchange会自动创建fanoutExchange
+     * fanout
      */
     @Test
     void contextLoads2() {
@@ -41,10 +38,8 @@ class ZzhApplicationTests {
             rabbitTemplate.convertAndSend("fanoutExchange", "", "fanout路由模型-" + i);
         }
     }
-
     /**
      * topic
-     * @Exchange会自动创建topicExchange
      */
     @Test
     void contextLoads3() {
@@ -53,8 +48,7 @@ class ZzhApplicationTests {
         }
     }
     /**
-     * topic
-     * @Exchange会自动创建directExchange
+     * direct
      */
     @Test
     void contextLoads4() {

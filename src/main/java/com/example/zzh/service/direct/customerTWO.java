@@ -7,7 +7,7 @@ import java.util.concurrent.TimeoutException;
 
 public class customerTWO {
     public static void main(String[] args) {
-        String routingKey = "user.zzh";
+        String routingKey = "user.zzh2";
         String exchange = "directExchange";
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("127.0.0.1");

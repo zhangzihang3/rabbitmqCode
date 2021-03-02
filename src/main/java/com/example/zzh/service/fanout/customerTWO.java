@@ -18,6 +18,8 @@ public class customerTWO {
         try {
             connection = connectionFactory.newConnection();
             Channel channel = connection.createChannel();
+            //交换机名字、交换机类型
+            channel.exchangeDeclare("emsExchange","fanout");
             //临时队列
             String queue = channel.queueDeclare().getQueue();
             channel.exchangeDeclare("emsExchange", "fanout");

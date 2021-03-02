@@ -13,15 +13,16 @@ public class customer {
         connectionFactory.setVirtualHost("ems");
         connectionFactory.setUsername("ems");
         connectionFactory.setPassword("ems");
-
         Connection connection = null;
         try {
             connection = connectionFactory.newConnection();
             Channel channel = connection.createChannel();
+            //交换机名字、交换机类型
+            channel.exchangeDeclare("emsExchange","fanout");
             //临时队列
             String queue = channel.queueDeclare().getQueue();
             //此通道交换机绑定队列、参数三：路由
-            channel.queueBind(queue,"emsExchange","");
+            channel.queueBind(queue, "emsExchange", "");
             //参数一：消费哪个队列的消息
             //参数二：开始消息的自动确认机制
             //参数三：消费时的回掉接口
